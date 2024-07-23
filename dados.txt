@@ -1,0 +1,67 @@
+entregador
+
+ {
+        "nome": "maria cristina",
+        "cpf": 25625611430,
+        "rg": "1212123",
+        "dataNascimento": "12/02/1986",
+        "foneCelular": "(11) 11111.111_",
+        "foneFixo": "(11) 1111.1111",
+        "qtdEntregasRealizadas": 10,
+        "valorFrete": 10.0,
+        "enderecoRua": "osvaldo crux",
+        "enderecoNumero": "56",
+        "enderecoBairro": "tamandare",
+        "enderecoCidade": "Moreno",
+        "enderecoCep": "54800-000",
+        "enderecoUf": null,
+        "enderecoComplemento": "dddd",
+        "ativo": true
+    }
+
+
+cliente
+
+{
+    "id": 1,
+    "nome": "maria cristina",
+    "dataNascimento": "1986-02-12",
+    "cpf": "25625611430",
+    "foneCelular": "(11) 11111.111_",
+    "foneFixo": "(11) 1111.1111"
+}
+
+Endereço Cliente
+
+{
+    "rua": "Rua x",
+    "numero": "25",
+    "bairro": "xyz",
+    "cep": "53.123.123",
+    "cidade": "z",
+    "estado": "zyz",
+    "complemento": "xy 21"
+}
+
+Produto
+
+{
+   "codigo": "ABC123",
+   "titulo": "Produto ABC",
+   "descricao": "Este é um produto de exemplo",
+   "valorUnitario": 59.99,
+   "tempoEntregaMinimo": 3,
+   "tempoEntregaMaximo": 7
+}
+
+Categoria
+
+{
+    "idCategoria": 3,
+   "codigo": "Sdf548",
+   "titulo": "Coxinha",
+   "descricao": "Coxinhas",
+   "valorUnitario": 5,
+   "tempoEntregaMinimo": 3,
+   "tempoEntregaMaximo": 7
+}
