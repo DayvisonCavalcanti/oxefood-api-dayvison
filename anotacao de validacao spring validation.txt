@@ -1,0 +1,178 @@
+Claro! Aqui está uma lista abrangente das anotações de validação padrão disponíveis na Bean Validation (JSR-380), que são usadas frequentemente em projetos Spring:
+
+### **Anotações de Validação**
+
+1. **@AssertFalse**
+   - Garante que o valor seja `false`.
+   ```java
+   @AssertFalse(message = "O valor deve ser falso")
+   private boolean flag;
+   ```
+
+2. **@AssertTrue**
+   - Garante que o valor seja `true`.
+   ```java
+   @AssertTrue(message = "O valor deve ser verdadeiro")
+   private boolean ativo;
+   ```
+
+3. **@DecimalMax**
+   - Define o valor máximo permitido para números decimais.
+   ```java
+   @DecimalMax(value = "100.00", message = "O valor deve ser no máximo 100.00")
+   private BigDecimal valor;
+   ```
+
+4. **@DecimalMin**
+   - Define o valor mínimo permitido para números decimais.
+   ```java
+   @DecimalMin(value = "1.00", message = "O valor deve ser no mínimo 1.00")
+   private BigDecimal valor;
+   ```
+
+5. **@Digits**
+   - Define o número máximo de dígitos e casas decimais.
+   ```java
+   @Digits(integer = 5, fraction = 2, message = "O valor deve ter no máximo 5 dígitos e 2 casas decimais")
+   private BigDecimal valor;
+   ```
+
+6. **@Email**
+   - Valida se o valor é um endereço de e-mail válido.
+   ```java
+   @Email(message = "O endereço de e-mail deve ser válido")
+   private String email;
+   ```
+
+7. **@Future**
+   - Valida se a data é no futuro.
+   ```java
+   @Future(message = "A data deve estar no futuro")
+   private LocalDate dataDeViagem;
+   ```
+
+8. **@FutureOrPresent**
+   - Valida se a data é no futuro ou no presente.
+   ```java
+   @FutureOrPresent(message = "A data deve ser no futuro ou no presente")
+   private LocalDate data;
+   ```
+
+9. **@Max**
+   - Define o valor máximo permitido para números.
+   ```java
+   @Max(value = 100, message = "O valor deve ser no máximo 100")
+   private int idade;
+   ```
+
+10. **@Min**
+    - Define o valor mínimo permitido para números.
+    ```java
+    @Min(value = 1, message = "O valor deve ser no mínimo 1")
+    private int idade;
+    ```
+
+11. **@NotBlank**
+    - Garante que a string não seja nula e não seja composta apenas por espaços em branco.
+    ```java
+    @NotBlank(message = "O campo não pode estar em branco")
+    private String descricao;
+    ```
+
+12. **@NotEmpty**
+    - Garante que a string não seja nula e não esteja vazia.
+    ```java
+    @NotEmpty(message = "O campo não pode estar vazio")
+    private String nome;
+    ```
+
+13. **@NotNull**
+    - Garante que o valor não seja `null`.
+    ```java
+    @NotNull(message = "O campo não pode ser nulo")
+    private String nome;
+    ```
+
+14. **@Null**
+    - Garante que o valor seja `null`.
+    ```java
+    @Null(message = "O campo deve ser nulo")
+    private String nome;
+    ```
+
+15. **@Past**
+    - Valida se a data é no passado.
+    ```java
+    @Past(message = "A data deve estar no passado")
+    private LocalDate dataDeNascimento;
+    ```
+
+16. **@PastOrPresent**
+    - Valida se a data é no passado ou no presente.
+    ```java
+    @PastOrPresent(message = "A data deve ser no passado ou no presente")
+    private LocalDate data;
+    ```
+
+17. **@Pattern**
+    - Valida a string com base em uma expressão regular.
+    ```java
+    @Pattern(regexp = "^81", message = "O valor deve começar com '81'")
+    private String codigo;
+    ```
+
+18. **@Size**
+    - Define o tamanho mínimo e máximo para strings e coleções.
+    ```java
+    @Size(min = 2, max = 50, message = "O tamanho deve estar entre 2 e 50 caracteres")
+    private String nome;
+    ```
+
+19. **@Positive**
+    - Garante que o número seja positivo.
+    ```java
+    @Positive(message = "O valor deve ser positivo")
+    private int quantidade;
+    ```
+
+20. **@PositiveOrZero**
+    - Garante que o número seja positivo ou zero.
+    ```java
+    @PositiveOrZero(message = "O valor deve ser positivo ou zero")
+    private int quantidade;
+    ```
+
+21. **@Negative**
+    - Garante que o número seja negativo.
+    ```java
+    @Negative(message = "O valor deve ser negativo")
+    private int quantidade;
+    ```
+
+22. **@NegativeOrZero**
+    - Garante que o número seja negativo ou zero.
+    ```java
+    @NegativeOrZero(message = "O valor deve ser negativo ou zero")
+    private int quantidade;
+    ```
+
+23. **@Valid**
+    - Valida objetos aninhados.
+    ```java
+    @Valid
+    private Endereco endereco;
+    ```
+
+24. **@CreditCardNumber**
+    - Valida se o valor é um número de cartão de crédito válido.
+    ```java
+    @CreditCardNumber(message = "O número do cartão de crédito deve ser válido")
+    private String numeroCartao;
+    ```
+
+### Observações
+
+- As mensagens de erro personalizadas (`message`) são opcionalmente usadas para fornecer feedback mais claro ao usuário.
+- Para usar essas anotações, você deve ter a dependência Bean Validation (javax.validation ou jakarta.validation) em seu projeto.
+
+Essas anotações ajudam a garantir que os dados sejam consistentes e válidos antes de serem processados ou armazenados em um banco de dados.

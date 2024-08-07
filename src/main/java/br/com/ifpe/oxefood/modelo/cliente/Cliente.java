@@ -37,6 +37,7 @@ public class Cliente extends EntidadeAuditavel {
 
    @Column(unique = true)
    private String cpf;
+   
 
    @Column
    private String foneCelular;

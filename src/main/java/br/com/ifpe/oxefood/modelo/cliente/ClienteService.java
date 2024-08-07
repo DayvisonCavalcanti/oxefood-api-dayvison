@@ -5,6 +5,8 @@ import java.util.List;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.ifpe.oxefood.util.exception.ClienteException;
 import jakarta.transaction.Transactional;
 
 
@@ -18,6 +20,12 @@ public class ClienteService {
 
     @Transactional
     public Cliente save(Cliente cliente) {
+
+        Cliente clienteConsultado = repository.findByNome(cliente.getNome());
+
+        if (clienteConsultado != null) {
+            throw new ClienteException(ClienteException.MSG_NOME_DUPLICADO);
+        }
 
         cliente.setHabilitado(Boolean.TRUE);
         cliente.setVersao(1L);

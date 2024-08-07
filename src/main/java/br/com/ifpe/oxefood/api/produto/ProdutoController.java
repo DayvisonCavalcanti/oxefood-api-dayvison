@@ -34,7 +34,7 @@ public class ProdutoController {
 
     @Operation(summary = "Serviço responsável por salvar um produto no sistema.", description = "Exemplo de descrição de um endpoint responsável por inserir um produto no sistema.")
     @PostMapping
-    public ResponseEntity<Produto> save(@RequestBody @Valid ProdutoRequest request) {
+    public ResponseEntity<Produto> save(@RequestBody @Valid ProdutoRequest request) { //throws ProdutoException
 
         Produto produtoNovo = request.build();
         produtoNovo.setCategoria(categoriaProdutoService.obterPorID(request.getIdCategoria()));

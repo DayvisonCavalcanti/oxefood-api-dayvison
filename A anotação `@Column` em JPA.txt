@@ -1,0 +1,81 @@
+Claro! A anotação `@Column` em JPA é bastante versátil e pode ser configurada com diferentes atributos para atender às necessidades específicas de seu modelo de dados. Aqui está uma lista com os atributos mais usados da anotação `@Column` e suas descrições:
+
+1. **`nullable`**:
+   - **Descrição**: Define se a coluna pode aceitar valores nulos.
+   - **Exemplo**: `@Column(nullable = false)` (A coluna não pode ter valores nulos.)
+
+2. **`length`**:
+   - **Descrição**: Define o comprimento máximo da coluna, aplicável principalmente a tipos de dados `String`.
+   - **Exemplo**: `@Column(length = 255)` (A coluna pode ter até 255 caracteres.)
+
+3. **`precision`**:
+   - **Descrição**: Define a precisão total para tipos de dados numéricos, como `BigDecimal`. Representa o número total de dígitos.
+   - **Exemplo**: `@Column(precision = 10)` (Define a precisão total para a coluna.)
+
+4. **`scale`**:
+   - **Descrição**: Define a escala para tipos de dados numéricos, como `BigDecimal`. Representa o número de dígitos à direita do ponto decimal.
+   - **Exemplo**: `@Column(precision = 10, scale = 2)` (Define a precisão total e o número de dígitos após o ponto decimal.)
+
+5. **`unique`**:
+   - **Descrição**: Define se os valores na coluna devem ser únicos. Cria uma restrição de unicidade na coluna.
+   - **Exemplo**: `@Column(unique = true)` (A coluna deve ter valores únicos.)
+
+6. **`insertable`**:
+   - **Descrição**: Define se a coluna deve ser incluída nas instruções de inserção geradas automaticamente.
+   - **Exemplo**: `@Column(insertable = false)` (A coluna não será incluída nas instruções de inserção.)
+
+7. **`updatable`**:
+   - **Descrição**: Define se a coluna pode ser atualizada. 
+   - **Exemplo**: `@Column(updatable = false)` (A coluna não pode ser atualizada após a inserção.)
+
+8. **`name`**:
+   - **Descrição**: Define o nome da coluna no banco de dados.
+   - **Exemplo**: `@Column(name = "nome_cliente")` (A coluna será chamada `nome_cliente` no banco de dados.)
+
+9. **`columnDefinition`**:
+   - **Descrição**: Define uma definição SQL personalizada para a coluna. Pode ser usado para especificar o tipo de dados exato ou outras características.
+   - **Exemplo**: `@Column(columnDefinition = "TEXT")` (A coluna será do tipo `TEXT` no banco de dados.)
+
+10. **`table`**:
+    - **Descrição**: Define a tabela que a coluna pertence, usado em contextos específicos, como em mapeamentos complexos.
+    - **Exemplo**: `@Column(table = "outra_tabela")` (A coluna é associada a uma tabela específica, quando necessário.)
+
+Aqui está como você poderia usar esses atributos em uma classe de entidade:
+
+```java
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Column;
+
+@Entity
+public class ExemploEntidade {
+
+    @Id
+    private Long id;
+
+    @Column(nullable = false, length = 100, unique = true)
+    private String nome;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal valor;
+
+    @Column(insertable = false, updatable = false)
+    private String status;
+
+    @Column(name = "data_criacao", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime dataCriacao;
+
+
+    @Column(nullable = false, length = 11, unique = true)
+    private String cpf; // CPF é geralmente armazenado como uma string com 11 caracteres
+
+    @Column(nullable = true, length = 15)
+    private String telefone; // Telefone pode variar em formato, então 15 é um tamanho razoável
+
+
+    // Getters e setters
+    // ...
+}
+```
+
+Neste exemplo, cada atributo da anotação `@Column` é utilizado para definir características específicas das colunas da tabela no banco de dados.

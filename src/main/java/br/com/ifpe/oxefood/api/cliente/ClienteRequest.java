@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,9 +38,12 @@ public class ClienteRequest {
     @CPF
     private String cpf;
 
-    private String foneCelular;
-    
     @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+    @Pattern(regexp = "^81", message = "Telefone celular deve começar com o prefixo 81")
+    private String foneCelular;
+
+    @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+    @Pattern(regexp = "^81", message = "Telefone celular deve começar com o prefixo 81")
     private String foneFixo;
 
     public Cliente build() {

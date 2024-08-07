@@ -28,7 +28,9 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @Operation(summary = "Serviço responsável por salvar um cliente no sistema.", description = "Exemplo de descrição de um endpoint responsável por inserir um cliente no sistema.")
+    @Operation(
+        summary = "Serviço responsável por salvar um cliente no sistema.", 
+        description = "Exemplo de descrição de um endpoint responsável por inserir um cliente no sistema.")
 
     @PostMapping // cadastrar dados para api pelo corpo do jason
     public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {

@@ -15,11 +15,10 @@ public class ProdutoService {
 
     @Transactional
     public Produto save(Produto produto) {
-
-        if (produto.getValorUnitario() < 10) {
-	    throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
-	}
-
+        // regras de negócio
+        if (produto.getValorUnitario() > 20 && produto.getValorUnitario() < 100) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
+        }
 
         produto.setHabilitado(Boolean.TRUE);
         produto.setVersao(1L);
@@ -40,6 +39,11 @@ public class ProdutoService {
     @Transactional
     public void update(Long id, Produto produtoAlterado) {
 
+          // regras de negócio
+          if (produtoAlterado.getValorUnitario() < 10) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
+        }
+
         Produto produto = repository.findById(id).get();
         produto.setCodigo(produtoAlterado.getCodigo());
         produto.setTitulo(produtoAlterado.getTitulo());
@@ -52,14 +56,14 @@ public class ProdutoService {
         repository.save(produto);
     }
 
-      // deletar cliente
-    @Transactional 
-   public void delete(Long id) {
+    // deletar cliente
+    @Transactional
+    public void delete(Long id) {
 
-       Produto produto = repository.findById(id).get();
-       produto.setHabilitado(Boolean.FALSE);
-       produto.setVersao(produto.getVersao() + 1);
+        Produto produto = repository.findById(id).get();
+        produto.setHabilitado(Boolean.FALSE);
+        produto.setVersao(produto.getVersao() + 1);
 
-       repository.save(produto);
-   }
+        repository.save(produto);
+    }
 }
