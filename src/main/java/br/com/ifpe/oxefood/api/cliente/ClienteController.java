@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.ifpe.oxefood.modelo.acesso.UsuarioService;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
 import br.com.ifpe.oxefood.modelo.cliente.EnderecoCliente;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,17 +28,22 @@ import jakarta.validation.Valid;
 @CrossOrigin
 
 public class ClienteController {
+
     @Autowired
     private ClienteService clienteService;
+
+       @Autowired
+    private UsuarioService usuarioService;
+
 
     @Operation(
         summary = "Serviço responsável por salvar um cliente no sistema.", 
         description = "Exemplo de descrição de um endpoint responsável por inserir um cliente no sistema.")
 
     @PostMapping // cadastrar dados para api pelo corpo do jason
-    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {
+    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest clienteRequest, HttpServletRequest request) {
 
-        Cliente cliente = clienteService.save(request.build());
+        Cliente cliente = clienteService.save(clienteRequest.build(), usuarioService.obterUsuarioLogado(request));
         return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
     }
 
@@ -53,9 +61,9 @@ public class ClienteController {
 
     @Operation(summary = "Serviço responsável por alterar um cliente pelo id no sistema.", description = "Exemplo de descrição de um endpoint responsável por alterar um cliente no sistema.")
     @PutMapping("/{id}") // alterar registro do cliente por id
-    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody @Valid ClienteRequest request) {
+    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody @Valid ClienteRequest clienteRequest, HttpServletRequest request) {
 
-        clienteService.update(id, request.build());
+        clienteService.update(id, clienteRequest.build(), usuarioService.obterUsuarioLogado(request));
         return ResponseEntity.ok().build();
     }
 
