@@ -23,12 +23,14 @@ entregador
 cliente
 
 {
-    "id": 1,
+    
+    "username": "maria@gmail.com",
+    "password": "12345678",
     "nome": "maria cristina",
-    "dataNascimento": "1986-02-12",
+    "dataNascimento": "12/02/1986",
     "cpf": "25625611430",
-    "foneCelular": "(11) 11111.111_",
-    "foneFixo": "(11) 1111.1111"
+    "foneCelular": "(81) 11111.111_",
+    "foneFixo": "(81) 1111.1111"
 }
 
 Endereço Cliente
