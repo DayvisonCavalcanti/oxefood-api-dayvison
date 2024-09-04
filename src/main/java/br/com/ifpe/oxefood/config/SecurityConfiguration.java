@@ -16,7 +16,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import br.com.ifpe.oxefood.modelo.acesso.Usuario;
+
 import br.com.ifpe.oxefood.modelo.seguranca.JwtAuthenticationFilter;
 
 @Configuration
@@ -46,7 +46,10 @@ public class SecurityConfiguration {
                         // permitir cadastrar o cliente
                         .requestMatchers(HttpMethod.POST, "/api/auth").permitAll()
                         // permitir logar
-                        // .requestMatchers(HttpMethod.GET,"api/produto").permitAll()
+                         .requestMatchers(HttpMethod.GET,"api/produto").permitAll()
+                         .requestMatchers(HttpMethod.POST,"api/produto").permitAll()
+                         .requestMatchers(HttpMethod.POST,"api/categoriaproduto").permitAll()
+                         .requestMatchers(HttpMethod.GET,"api/categoriaproduto").permitAll()
                         // permitir listar produto por id
                         // .requestMatchers(HttpMethod.GET,"api/produto/*").permitAll()
                         // permitir remover produto por id
